@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>H &amp; M World Tour 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Watercolor texture overlay -->
+  <div class="watercolor-bg"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <h1 class="title">H &amp; M World Tour</h1>
+      <p class="subtitle">April 12 &ndash; June 29, 2026</p>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <div class="main-container">
+    <!-- Map -->
+    <div id="map-container">
+      <div class="map-frame">
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <!-- Itinerary Panel -->
+    <div id="itinerary-panel" class="panel">
+      <button class="panel-toggle" id="panel-toggle" aria-label="Toggle itinerary">
+        <span class="toggle-icon">&#9776;</span>
+      </button>
+      <div class="panel-content">
+        <h2 class="panel-title">Travel Journal</h2>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="current">Now</button>
+          <button class="filter-btn" data-filter="upcoming">Next</button>
+        </div>
+        <div id="itinerary-list" class="itinerary-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Note/Image Modal -->
+  <div id="note-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content paper-card">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h3 class="modal-title" id="modal-location-title"></h3>
+      <p class="modal-dates" id="modal-dates"></p>
+      <div class="modal-accommodation" id="modal-accommodation"></div>
+      <div class="modal-transport" id="modal-transport"></div>
+
+      <!-- Existing notes -->
+      <div id="notes-list" class="notes-list"></div>
+
+      <!-- Add note form -->
+      <div class="add-note-section">
+        <h4>Leave a Note or Memory</h4>
+        <textarea id="note-text" placeholder="Write about your day..." rows="3"></textarea>
+        <div class="note-actions">
+          <label class="image-upload-label">
+            <span>&#128247; Add Photo</span>
+            <input type="file" id="note-image" accept="image/*" capture="environment" class="hidden-input">
+          </label>
+          <button id="save-note-btn" class="save-btn">Pin to Map &#128204;</button>
+        </div>
+        <div id="image-preview" class="image-preview hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Note Modal -->
+  <div id="view-note-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content paper-card view-note-content">
+      <button class="modal-close" id="view-note-close">&times;</button>
+      <div id="view-note-body"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="trip-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
